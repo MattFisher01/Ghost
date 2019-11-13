@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+
+    }
+
+    th, td{
+        style: "padding-right:100px"
+    }
+
+    table{
+        table-layout: auto;
+    }
+</style>
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <br>
+    <br>
+    <p>Welcome to the overview page.  Please see below a list of all ghost names with the names of anyone who already has one</p>
+
+
+</head>
+<body>
+
+    {% if all_names %}
+        <table>
+            <tr>
+                <th>Ghost Name</th>
+                <th>Taken By</th>
+            </tr>
+            {% for v in all_names %}
+                <tr>
+                    <td>{{ v.ghost_name }}</td>
+                    <td>{{ v.person }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+
+    <br>
+    <br>
+
+    <a href="{% url 'login' %}">Log In</a>
+
+    <br>
+    <br>
+
+    {% if logged_in == 'true'  %}
+        <a href="{% url 'form-page' %}">Change your current phantom name</a>
+    {% else %}
+        <a href="{% url 'form-page' %}">Get a phantom name</a>
+    {% endif %}}
+
+
+
+</body>
+</html>
